@@ -36,9 +36,11 @@ export default function Navbar() {
     <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
       transition: 'background 0.3s',
-      background: scrolled ? 'rgba(8,12,20,0.92)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : 'none',
+      /* Always blur — prevents circuit lines bleeding through text */
+      background: scrolled ? 'rgba(8,12,20,0.90)' : 'rgba(8,12,20,0.50)',
+      backdropFilter: 'blur(10px)',
+      WebkitBackdropFilter: 'blur(10px)',
+      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : 'none',
     }}>
       {/* 15% left margin, centered nav */}
       <div style={{
@@ -49,8 +51,8 @@ export default function Navbar() {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-        {/* Desktop nav — centered, white text, 1rem */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 44 }}
+        {/* Desktop nav — 40px gap, pure white 500 weight */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: 40 }}
           className="nav-desktop">
           {links.map(l => (
             <a
@@ -59,14 +61,14 @@ export default function Navbar() {
               style={{
                 fontFamily: 'var(--mono)',
                 fontSize: '1rem',
-                fontWeight: active === l.href.slice(1) ? 700 : 600,
+                fontWeight: 500,
                 letterSpacing: '2px',
                 textTransform: 'uppercase',
                 color: '#ffffff',
                 textDecoration: 'none',
                 transition: 'opacity 0.2s',
-                opacity: active === l.href.slice(1) ? 1 : 0.7,
-                borderBottom: active === l.href.slice(1) ? '1px solid #38bdf8' : '1px solid transparent',
+                opacity: active === l.href.slice(1) ? 1 : 0.75,
+                borderBottom: active === l.href.slice(1) ? '2px solid #38bdf8' : '2px solid transparent',
                 paddingBottom: 2,
               }}
               onMouseEnter={e => e.currentTarget.style.opacity = '1'}

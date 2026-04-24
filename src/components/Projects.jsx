@@ -46,45 +46,53 @@ export default function Projects() {
           <span className="sec-label">Projects</span>
           <h2 className="sec-heading">Things I've built.</h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {/* Equal-height cards grid — buttons pinned to bottom */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20, alignItems: 'stretch' }}>
             {projects.map(p => (
               <div key={p.number}
                 className="hyper-glass"
-                style={{ padding: '32px 36px', transition: 'border-color 0.2s, background 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(0,255,255,0.25)'; e.currentTarget.style.background = 'rgba(0,255,255,0.04)'; }}
+                style={{
+                  padding: '32px 32px 28px',
+                  transition: 'border-color 0.2s, background 0.2s',
+                  display: 'flex', flexDirection: 'column',   /* flex column for pinning */
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(56,189,248,0.30)'; e.currentTarget.style.background = 'rgba(56,189,248,0.04)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
               >
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 16 }}>
+                {/* Top: icon + title */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 14 }}>
                   <CardShape n={p.number} />
                   <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748b' }}>{p.number}</span>
-                      <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 20, fontWeight: 700, color: '#f0f4f8', letterSpacing: '-0.3px', lineHeight: 1 }}>{p.title}</h3>
+                      <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 18, fontWeight: 700, color: '#f0f4f8', letterSpacing: '-0.3px', lineHeight: 1.2 }}>{p.title}</h3>
                     </div>
-                    <p style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 500, color: '#00ffff', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{p.subtitle}</p>
+                    <p style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 500, color: '#38bdf8', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{p.subtitle}</p>
                   </div>
                 </div>
 
-                <p style={{ fontSize: 13, color: '#94a3b8', lineHeight: 1.6, marginBottom: 20, maxWidth: 680 }}>
+                {/* Description — flex-1 pushes buttons to bottom */}
+                <p style={{ fontSize: 13, color: '#94a3b8', lineHeight: 1.6, marginBottom: 16, flex: 1 }}>
                   <BoldTech text={p.description} />
                 </p>
 
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                    {p.tags.map(tag => <span key={tag} className="tag-cap">{tag}</span>)}
-                  </div>
-                  <div style={{ display: 'flex', gap: 10, flexShrink: 0 }}>
-                    <a href={p.demo} target="_blank" rel="noopener noreferrer" className="btn-cyan"
-                      style={{ animation: 'demo-pulse 2.5s ease-in-out infinite', padding: '7px 16px', fontSize: 12 }}
-                      onMouseEnter={e => e.currentTarget.style.animationPlayState = 'paused'}
-                      onMouseLeave={e => e.currentTarget.style.animationPlayState = 'running'}>
-                      Live Demo <ExternalLink size={12} />
-                    </a>
-                    <a href={p.code} target="_blank" rel="noopener noreferrer" className="btn-ghost"
-                      style={{ padding: '7px 16px', fontSize: 12 }}>
-                      View Code <ArrowUpRight size={12} />
-                    </a>
-                  </div>
+                {/* Tags */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 20 }}>
+                  {p.tags.map(tag => <span key={tag} className="tag-cap">{tag}</span>)}
+                </div>
+
+                {/* Buttons — always at bottom */}
+                <div style={{ display: 'flex', gap: 10, marginTop: 'auto' }}>
+                  <a href={p.demo} target="_blank" rel="noopener noreferrer" className="btn-cyan"
+                    style={{ animation: 'demo-pulse 2.5s ease-in-out infinite', padding: '8px 18px', fontSize: 12, flex: 1, justifyContent: 'center' }}
+                    onMouseEnter={e => e.currentTarget.style.animationPlayState = 'paused'}
+                    onMouseLeave={e => e.currentTarget.style.animationPlayState = 'running'}>
+                    Live Demo <ExternalLink size={12} />
+                  </a>
+                  <a href={p.code} target="_blank" rel="noopener noreferrer" className="btn-ghost"
+                    style={{ padding: '8px 18px', fontSize: 12, flex: 1, justifyContent: 'center' }}>
+                    View Code <ArrowUpRight size={12} />
+                  </a>
                 </div>
               </div>
             ))}
