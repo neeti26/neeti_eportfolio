@@ -184,7 +184,7 @@ export const education = [
     institution: "Bharati Vidyapeeth Deemed University, Pune",
     degree: "Bachelor of Computer Application",
     period: "Mar 2023 – May 2026",
-    gpa: "9.4 / 10.0",
+    gpa: "8.95 / 10.0",
     coursework: ["Database Management", "Data Structures", "Machine Learning", "Business Analytics"],
   },
 ];

@@ -3,51 +3,16 @@ import { MapPin, ArrowRight, Download } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
 import profilePhoto from '../assets/profile.jpg';
 
-const roles = ['Data Scientist', 'ML Engineer', 'Python Developer', 'AI Engineer'];
+const roles = ['Data Scientist', 'ML Engineer', 'AI Engineer', 'Python Developer'];
 
-/* ── Neural network corner nodes ── */
-function NeuralCorners() {
-  return (
-    <>
-      {[
-        { top: -6, left: -6 },
-        { top: -6, right: -6 },
-        { bottom: -6, left: -6 },
-        { bottom: -6, right: -6 },
-      ].map((pos, i) => (
-        <div key={i} style={{ position: 'absolute', ...pos, zIndex: 20 }}>
-          {/* Pulse ring */}
-          <div style={{
-            position: 'absolute',
-            width: 24, height: 24,
-            borderRadius: '50%',
-            background: 'rgba(0,245,196,0.18)',
-            top: '50%', left: '50%',
-            transform: 'translate(-50%,-50%)',
-            animation: `neural-pulse 2.4s ease-in-out infinite`,
-            animationDelay: `${i * 0.6}s`,
-          }} />
-          {/* Node dot */}
-          <div style={{
-            width: 10, height: 10,
-            borderRadius: '50%',
-            background: '#00f5c4',
-            border: '2px solid #030712',
-            boxShadow: '0 0 8px rgba(0,245,196,0.9)',
-            animation: `node-glow 2.4s ease-in-out infinite`,
-            animationDelay: `${i * 0.6}s`,
-          }} />
-        </div>
-      ))}
-    </>
-  );
-}
+/* Subtle dark-metallic circuit SVG pattern */
+const CIRCUIT_SVG = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(180,200,220,0.07)' stroke-width='1'%3E%3Cpath d='M0 20h20v20M40 0v20h20M80 40H60v20M20 80V60H0M60 80V60h20M0 60h20M80 20H60'/%3E%3Ccircle cx='20' cy='20' r='2.5' fill='rgba(180,200,220,0.10)'/%3E%3Ccircle cx='60' cy='20' r='2.5' fill='rgba(180,200,220,0.10)'/%3E%3Ccircle cx='20' cy='60' r='2.5' fill='rgba(180,200,220,0.10)'/%3E%3Ccircle cx='60' cy='60' r='2.5' fill='rgba(180,200,220,0.10)'/%3E%3Ccircle cx='40' cy='40' r='2' fill='rgba(180,200,220,0.08)'/%3E%3C/g%3E%3C/svg%3E")`;
 
 export default function Hero() {
-  const [roleIdx, setRoleIdx]   = useState(0);
-  const [text, setText]         = useState('');
+  const [roleIdx, setRoleIdx] = useState(0);
+  const [text, setText] = useState('');
   const [deleting, setDeleting] = useState(false);
-  const [charIdx, setCharIdx]   = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
 
   useEffect(() => {
     const cur = roles[roleIdx];
@@ -65,197 +30,133 @@ export default function Hero() {
   return (
     <>
       <style>{`
-        @keyframes neural-pulse {
-          0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.5; }
-          50%  { transform: translate(-50%,-50%) scale(2.4); opacity: 0; }
-          100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.5; }
+        /* Hexagon clip-path */
+        .hex-clip {
+          clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
         }
-        @keyframes node-glow {
-          0%,100% { box-shadow: 0 0 6px rgba(0,245,196,0.7); }
-          50%      { box-shadow: 0 0 18px rgba(0,245,196,1), 0 0 32px rgba(0,245,196,0.35); }
+        /* Fade edges into background via radial mask */
+        .hex-fade {
+          -webkit-mask-image: radial-gradient(ellipse 88% 92% at 50% 50%, black 55%, transparent 100%);
+          mask-image: radial-gradient(ellipse 88% 92% at 50% 50%, black 55%, transparent 100%);
+        }
+        .hero-grid { grid-template-columns: 55% 45%; }
+        @media (max-width: 768px) {
+          .hero-grid { grid-template-columns: 1fr !important; }
+          .hero-photo-col { justify-content: center !important; padding-right: 0 !important; }
         }
       `}</style>
 
-      <section id="hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+      <section id="hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: 64 }}>
+        <div style={{ width: '100%', maxWidth: 1100, margin: '0 auto', padding: '60px 15%' }}>
+          <div className="hero-grid" style={{ display: 'grid', gap: 40, alignItems: 'center' }}>
 
-        {/* ── Centered container: max 1200px, 10% inner margin each side ── */}
-        <div style={{
-          width: '100%',
-          maxWidth: 1200,
-          margin: '0 auto',
-          padding: '96px 10% 80px',
-        }}>
-
-          {/* ── 60 / 40 grid ── */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '60% 40%',
-            gap: 48,
-            alignItems: 'center',
-          }}>
-
-            {/* ══ LEFT: Text block ══ */}
+            {/* ── LEFT: Text ── */}
             <div>
-
               {/* Status badge */}
               <div className="anim-in" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '6px 14px', borderRadius: 999,
-                border: '1px solid rgba(0,245,196,0.30)',
-                background: 'rgba(0,245,196,0.07)',
-                marginBottom: 28,
+                padding: '5px 14px', borderRadius: 999,
+                border: '1px solid rgba(56,189,248,0.30)',
+                background: 'rgba(56,189,248,0.06)',
+                marginBottom: 24,
               }}>
-                <span style={{
-                  width: 7, height: 7, borderRadius: '50%',
-                  background: '#00f5c4',
-                  animation: 'pulse 2s cubic-bezier(0.4,0,0.6,1) infinite',
-                  flexShrink: 0,
-                }} />
-                <span style={{
-                  fontSize: 11, fontWeight: 600,
-                  letterSpacing: '0.14em', textTransform: 'uppercase',
-                  color: '#00f5c4',
-                }}>Open to Opportunities</span>
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#38bdf8', animation: 'pulse 2s infinite', flexShrink: 0 }} />
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#38bdf8' }}>
+                  Open to Opportunities
+                </span>
               </div>
 
-              {/* Name */}
+              {/* Name — Playfair Display, authoritative serif, pure white */}
               <h1 className="anim-up d1" style={{
-                fontSize: 'clamp(2.6rem, 5vw, 3.6rem)',
-                fontWeight: 800,
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: 'clamp(3rem, 5.5vw, 4.8rem)',
+                fontWeight: 900,
                 color: '#ffffff',
-                lineHeight: 1.1,
-                letterSpacing: '-0.02em',
-                marginBottom: 18,
-              }}>
-                Neeti Malu
-              </h1>
+                lineHeight: 1.0,
+                letterSpacing: '-1px',
+                marginBottom: 16,
+              }}>Neeti Malu</h1>
 
-              {/* Typewriter — bold clean sans-serif, Electric Mint */}
-              <div className="anim-up d2" style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                height: 36, marginBottom: 28,
-              }}>
-                <span style={{
-                  fontSize: 20,
-                  fontWeight: 700,
-                  fontFamily: 'Inter, -apple-system, sans-serif',
-                  color: '#00f5c4',
-                  letterSpacing: '-0.01em',
-                }}>{text}</span>
-                <span className="cursor" style={{
-                  display: 'inline-block', width: 2, height: 22,
-                  background: '#00f5c4',
-                }} />
+              {/* Role — monospace, Cyber-Cyan */}
+              <div className="anim-up d2" style={{ display: 'flex', alignItems: 'center', gap: 6, height: 34, marginBottom: 28 }}>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 17, fontWeight: 600, color: '#38bdf8', letterSpacing: '0.04em' }}>{text}</span>
+                <span className="cursor" style={{ display: 'inline-block', width: 2, height: 20, background: '#38bdf8' }} />
               </div>
 
-              {/* Bio — line-height 1.6 */}
-              <p className="anim-up d3" style={{
-                color: '#94a3b8',
-                fontSize: 15,
-                lineHeight: 1.6,
-                maxWidth: 480,
-                marginBottom: 18,
-              }}>
-                I build intelligent systems — fraud detectors, synthetic data generators,
-                and NLP pipelines — powered by Python, ML, and a relentless curiosity
-                for what data can do.
+              {/* Bio */}
+              <p className="anim-up d3" style={{ color: '#64748b', fontSize: 14, lineHeight: 1.8, maxWidth: 440, marginBottom: 16 }}>
+                I build intelligent systems — fraud detectors, synthetic data generators, and NLP pipelines —
+                powered by Python, ML, and a relentless curiosity for what data can do.
               </p>
 
               {/* Location */}
-              <div className="anim-up d3" style={{
-                display: 'flex', alignItems: 'center', gap: 7,
-                color: '#64748b', fontSize: 13, marginBottom: 36,
-              }}>
-                <MapPin size={13} color="#00f5c4" style={{ flexShrink: 0 }} />
-                Pune, India · Available for Remote & On-site
+              <div className="anim-up d3" style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 36 }}>
+                <MapPin size={13} color="#38bdf8" />
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#475569', letterSpacing: '0.06em' }}>
+                  Pune, India · Remote Available
+                </span>
               </div>
 
-              {/* CTA buttons */}
-              <div className="anim-up d4" style={{
-                display: 'flex', flexWrap: 'wrap', gap: 12,
-                marginBottom: 0,
-              }}>
-                <a href="#projects" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  padding: '10px 24px',
-                  background: '#ffffff', color: '#0f172a',
-                  fontSize: 13, fontWeight: 700, borderRadius: 8,
-                  textDecoration: 'none',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-                  transition: 'background 0.2s',
-                }}>
-                  View Projects <ArrowRight size={14} />
-                </a>
-                <a href="#contact" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  padding: '10px 24px',
-                  border: '1px solid rgba(0,245,196,0.40)',
-                  color: '#00f5c4',
-                  fontSize: 13, fontWeight: 600, borderRadius: 8,
-                  textDecoration: 'none',
-                  transition: 'background 0.2s',
-                }}>
-                  Get In Touch
-                </a>
-                <a href="/resume.pdf" download style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  padding: '10px 24px',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  color: '#cbd5e1',
-                  fontSize: 13, fontWeight: 500, borderRadius: 8,
-                  textDecoration: 'none',
-                  transition: 'background 0.2s',
-                }}>
+              {/* CTAs */}
+              <div className="anim-up d4" style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+                <a href="#projects" className="btn-cyan">View Projects <ArrowRight size={14} /></a>
+                <a href="#contact" className="btn-ghost">Get In Touch</a>
+                <a href="/resume.pdf" download className="btn-ghost">
                   <Download size={13} /> Resume
                 </a>
               </div>
-
-              {/* Stats bar removed */}
             </div>
 
-            {/* ══ RIGHT: Photo — 100px from right edge, 15% larger than previous ══ */}
-            <div className="anim-in d3" style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              paddingRight: 100,
-            }}>
-              <div style={{ position: 'relative' }}>
+            {/* ── RIGHT: Photo with hexagon mask + circuit bg ── */}
+            <div className="anim-in d3 hero-photo-col" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+              <div style={{ position: 'relative', width: 300, height: 340 }}>
 
-                {/* Mint glow — scales with image */}
+                {/* Circuit pattern layer behind photo */}
                 <div style={{
-                  position: 'absolute', inset: -40,
-                  borderRadius: 32,
-                  background: 'radial-gradient(ellipse at center, rgba(0,245,196,0.13) 0%, transparent 68%)',
-                  filter: 'blur(20px)',
+                  position: 'absolute', inset: -30, zIndex: 0,
+                  backgroundImage: CIRCUIT_SVG,
+                  backgroundSize: '80px 80px',
+                  opacity: 0.6,
+                  borderRadius: 8,
+                }} />
+
+                {/* Radial glow halo */}
+                <div style={{
+                  position: 'absolute', inset: -40, zIndex: 1,
+                  background: 'radial-gradient(ellipse at center, rgba(56,189,248,0.09) 0%, transparent 65%)',
+                  filter: 'blur(16px)',
                   pointerEvents: 'none',
                 }} />
 
-                {/* Glassmorphism frame */}
-                <div style={{
-                  position: 'relative',
-                  padding: 3,
-                  borderRadius: 20,
-                  background: 'linear-gradient(135deg, rgba(0,245,196,0.30) 0%, rgba(255,255,255,0.05) 50%, rgba(0,245,196,0.15) 100%)',
-                  boxShadow: '0 0 50px rgba(0,245,196,0.11), 0 24px 70px rgba(0,0,0,0.55)',
+                {/* Photo container — hexagon clip + edge fade */}
+                <div className="hex-clip hex-fade" style={{
+                  position: 'relative', zIndex: 2,
+                  width: '100%', height: '100%',
+                  overflow: 'hidden',
                 }}>
-                  {/* Photo — 285×356 */}
+                  <img
+                    src={profilePhoto}
+                    alt="Neeti Malu"
+                    style={{
+                      width: '100%', height: '100%',
+                      objectFit: 'cover', objectPosition: 'top center',
+                      display: 'block',
+                    }}
+                  />
+                  {/* Directional key-light overlay — soft white from top-left */}
                   <div style={{
-                    width: 285, height: 356,
-                    borderRadius: 16,
-                    overflow: 'hidden',
-                    position: 'relative',
-                  }}>
-                    <img
-                      src={profilePhoto}
-                      alt="Neeti Malu"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-                    />
-                  </div>
-
-                  {/* Neural corner nodes */}
-                  <NeuralCorners />
+                    position: 'absolute', inset: 0,
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 40%, transparent 70%)',
+                    pointerEvents: 'none',
+                  }} />
+                  {/* Bottom fade into background */}
+                  <div style={{
+                    position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%',
+                    background: 'linear-gradient(to top, #080c14 0%, transparent 100%)',
+                    pointerEvents: 'none',
+                  }} />
                 </div>
+
               </div>
             </div>
 

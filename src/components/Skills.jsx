@@ -1,70 +1,67 @@
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { skills } from '../data/portfolio';
 
+const research = [
+  { name: 'Fraud Detection in Decentralized Systems' },
+  { name: 'VAE-based Synthetic Data Generation' },
+  { name: 'LLM Fine-tuning & Prompt Engineering' },
+  { name: 'Anomaly Detection in Network Traffic' },
+  { name: 'Explainable AI (XAI)' },
+];
+
 export default function Skills() {
   const [ref, visible] = useIntersectionObserver();
 
+  const allCategories = [
+    ...Object.entries(skills),
+    ['Research', research],
+  ];
+
   return (
-    <section id="skills" style={{ padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-      {/* 1000px centered container */}
-      <div style={{ maxWidth: 1000, margin: '0 auto', paddingLeft: '8%', paddingRight: '8%' }}>
+    <section id="skills" style={{ padding: '80px 0' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 clamp(24px, 5%, 80px)' }}>
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
 
-          {/* Header */}
-          <p style={{
-            fontSize: 11, fontWeight: 600,
-            letterSpacing: '0.2em', textTransform: 'uppercase',
-            color: '#00f5c4', marginBottom: 12,
-          }}>Skills</p>
-          <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
-            fontWeight: 900, color: '#ffffff',
-            lineHeight: 1.1, letterSpacing: '-0.01em',
-            marginBottom: 56,
-          }}>Technical stack.</h2>
+          <span className="sec-label">Skills</span>
+          <h2 className="sec-heading">Technical stack.</h2>
 
-          {/* 4-column grid — one column per category */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 40,
-            alignItems: 'start',
-          }}>
-            {Object.entries(skills).map(([category, items]) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 40, alignItems: 'start' }}>
+            {allCategories.map(([category, items]) => (
               <div key={category}>
-                {/* Category header — bold Electric Mint */}
+                {/* Category header */}
                 <p style={{
-                  fontSize: 11, fontWeight: 700,
-                  letterSpacing: '0.14em', textTransform: 'uppercase',
-                  color: '#00f5c4',
-                  marginBottom: 20,
-                  lineHeight: 1.4,
+                  fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700,
+                  letterSpacing: '0.16em', textTransform: 'uppercase',
+                  color: '#38bdf8', marginBottom: 14,
                 }}>{category}</p>
 
-                {/* Skill capsules */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {/* Skill boxes */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   {items.map(skill => (
-                    <span key={skill.name} style={{
-                      display: 'block',
-                      padding: '7px 14px',
-                      background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      borderRadius: 8,
-                      fontSize: 12,
-                      color: '#94a3b8',
-                      fontWeight: 500,
-                      letterSpacing: '0.01em',
-                      transition: 'border-color 0.15s, color 0.15s',
-                      cursor: 'default',
-                    }}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.borderColor = 'rgba(0,245,196,0.25)';
-                      e.currentTarget.style.color = '#e2e8f0';
-                    }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
-                      e.currentTarget.style.color = '#94a3b8';
-                    }}
+                    <span key={skill.name}
+                      style={{
+                        display: 'block',
+                        padding: '9px 14px',
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.12)',
+                        borderRadius: 8,
+                        fontSize: 13,
+                        color: '#cbd5e1',       /* clearly visible */
+                        fontWeight: 500,
+                        cursor: 'default',
+                        transition: 'border-color 0.15s, color 0.15s, background 0.15s',
+                        lineHeight: 1.4,
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.borderColor = 'rgba(56,189,248,0.40)';
+                        e.currentTarget.style.color = '#ffffff';
+                        e.currentTarget.style.background = 'rgba(56,189,248,0.06)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+                        e.currentTarget.style.color = '#cbd5e1';
+                        e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                      }}
                     >{skill.name}</span>
                   ))}
                 </div>

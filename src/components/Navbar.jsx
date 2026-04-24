@@ -11,8 +11,8 @@ const links = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen]         = useState(false);
-  const [active, setActive]     = useState('');
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -33,39 +33,82 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-[#030712]/90 backdrop-blur-md border-b border-white/6' : 'bg-transparent'
-    }`}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 10%' }}
-        className="h-16 flex items-center justify-between">
-
-        {/* Nav links only — no logo, no resume button */}
-        <nav className="hidden md:flex items-center gap-7 w-full justify-center">
+    <header style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+      transition: 'background 0.3s',
+      background: scrolled ? 'rgba(8,12,20,0.92)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(20px)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : 'none',
+    }}>
+      {/* 15% left margin, centered nav */}
+      <div style={{
+        paddingLeft: '15%',
+        paddingRight: '5%',
+        height: 64,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        {/* Desktop nav — centered, white text, 1rem */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: 44 }}
+          className="nav-desktop">
           {links.map(l => (
-            <a key={l.href} href={l.href}
-              className={`nav-link ${active === l.href.slice(1) ? 'active' : ''}`}>
+            <a
+              key={l.href}
+              href={l.href}
+              style={{
+                fontFamily: 'var(--mono)',
+                fontSize: '1rem',
+                fontWeight: active === l.href.slice(1) ? 700 : 600,
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'opacity 0.2s',
+                opacity: active === l.href.slice(1) ? 1 : 0.7,
+                borderBottom: active === l.href.slice(1) ? '1px solid #38bdf8' : '1px solid transparent',
+                paddingBottom: 2,
+              }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+              onMouseLeave={e => { if (active !== l.href.slice(1)) e.currentTarget.style.opacity = '0.7'; }}
+            >
               {l.label}
             </a>
           ))}
         </nav>
 
         {/* Mobile toggle */}
-        <button className="md:hidden text-slate-400 hover:text-white ml-auto" onClick={() => setOpen(!open)}>
-          {open ? <X size={20} /> : <Menu size={20} />}
+        <button
+          onClick={() => setOpen(!open)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', marginLeft: 'auto', display: 'none' }}
+          className="nav-mobile-btn">
+          {open ? <X size={20} color="#ffffff" /> : <Menu size={20} color="#ffffff" />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#030712]/95 backdrop-blur-md border-b border-white/6 px-8 py-5 flex flex-col gap-4">
+        <div style={{
+          background: 'rgba(8,12,20,0.97)',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          padding: '20px 15%',
+          display: 'flex', flexDirection: 'column', gap: 16,
+        }}>
           {links.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="text-slate-300 hover:text-white text-sm font-medium transition-colors">
+              style={{ fontFamily: 'var(--mono)', fontSize: '1rem', fontWeight: 600, letterSpacing: '2px', color: '#ffffff', textDecoration: 'none', textTransform: 'uppercase' }}>
               {l.label}
             </a>
           ))}
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 640px) {
+          .nav-desktop { display: none !important; }
+          .nav-mobile-btn { display: block !important; }
+        }
+      `}</style>
     </header>
   );
 }
