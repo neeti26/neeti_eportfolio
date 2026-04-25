@@ -5,9 +5,6 @@ import profilePhoto from '../assets/profile.jpg';
 
 const roles = ['Data Scientist', 'ML Engineer', 'AI Engineer', 'Python Developer'];
 
-/* Subtle dark-metallic circuit SVG pattern */
-const CIRCUIT_SVG = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(180,200,220,0.07)' stroke-width='1'%3E%3Cpath d='M0 20h20v20M40 0v20h20M80 40H60v20M20 80V60H0M60 80V60h20M0 60h20M80 20H60'/%3E%3Ccircle cx='20' cy='20' r='2.5' fill='rgba(180,200,220,0.10)'/%3E%3Ccircle cx='60' cy='20' r='2.5' fill='rgba(180,200,220,0.10)'/%3E%3Ccircle cx='20' cy='60' r='2.5' fill='rgba(180,200,220,0.10)'/%3E%3Ccircle cx='60' cy='60' r='2.5' fill='rgba(180,200,220,0.10)'/%3E%3Ccircle cx='40' cy='40' r='2' fill='rgba(180,200,220,0.08)'/%3E%3C/g%3E%3C/svg%3E")`;
-
 export default function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
   const [text, setText] = useState('');
@@ -30,15 +27,6 @@ export default function Hero() {
   return (
     <>
       <style>{`
-        /* Hexagon clip-path */
-        .hex-clip {
-          clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
-        }
-        /* Fade edges into background via radial mask */
-        .hex-fade {
-          -webkit-mask-image: radial-gradient(ellipse 88% 92% at 50% 50%, black 55%, transparent 100%);
-          mask-image: radial-gradient(ellipse 88% 92% at 50% 50%, black 55%, transparent 100%);
-        }
         .hero-grid { grid-template-columns: 55% 45%; }
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr !important; }
@@ -107,52 +95,42 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* ── RIGHT: Photo with hexagon mask + circuit bg ── */}
+            {/* ── RIGHT: Photo — corporate rounded rect frame ── */}
             <div className="anim-in d3 hero-photo-col" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-              <div style={{ position: 'relative', width: 300, height: 340 }}>
+              <div style={{ position: 'relative' }}>
 
-                {/* Circuit pattern layer behind photo */}
+                {/* Soft radial glow behind */}
                 <div style={{
-                  position: 'absolute', inset: -30, zIndex: 0,
-                  backgroundImage: CIRCUIT_SVG,
-                  backgroundSize: '80px 80px',
-                  opacity: 0.6,
-                  borderRadius: 8,
+                  position: 'absolute', inset: -40, zIndex: 0,
+                  background: 'radial-gradient(ellipse at center, rgba(56,189,248,0.10) 0%, transparent 65%)',
+                  filter: 'blur(20px)', pointerEvents: 'none',
                 }} />
 
-                {/* Radial glow halo */}
+                {/* Corporate frame: rounded rect, thin sky-blue border */}
                 <div style={{
-                  position: 'absolute', inset: -40, zIndex: 1,
-                  background: 'radial-gradient(ellipse at center, rgba(56,189,248,0.09) 0%, transparent 65%)',
-                  filter: 'blur(16px)',
-                  pointerEvents: 'none',
-                }} />
-
-                {/* Photo container — hexagon clip + edge fade */}
-                <div className="hex-clip hex-fade" style={{
-                  position: 'relative', zIndex: 2,
-                  width: '100%', height: '100%',
+                  position: 'relative', zIndex: 1,
+                  borderRadius: 16,
+                  border: '1.5px solid rgba(56,189,248,0.55)',
+                  boxShadow: '0 0 0 1px rgba(56,189,248,0.12), 0 8px 40px rgba(0,0,0,0.6), 0 0 30px rgba(56,189,248,0.08)',
                   overflow: 'hidden',
+                  background: '#0a1020',
                 }}>
                   <img
                     src={profilePhoto}
                     alt="Neeti Malu"
                     style={{
-                      width: '100%', height: '100%',
-                      objectFit: 'cover', objectPosition: 'top center',
+                      width: 260, height: 320,
+                      objectFit: 'cover',
+                      objectPosition: 'top center',
                       display: 'block',
+                      /* Subtle brightness boost for professional look */
+                      filter: 'brightness(1.05) contrast(1.02)',
                     }}
                   />
-                  {/* Directional key-light overlay — soft white from top-left */}
+                  {/* Directional key-light overlay */}
                   <div style={{
                     position: 'absolute', inset: 0,
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 40%, transparent 70%)',
-                    pointerEvents: 'none',
-                  }} />
-                  {/* Bottom fade into background */}
-                  <div style={{
-                    position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%',
-                    background: 'linear-gradient(to top, #080c14 0%, transparent 100%)',
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%)',
                     pointerEvents: 'none',
                   }} />
                 </div>
