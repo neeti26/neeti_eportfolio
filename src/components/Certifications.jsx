@@ -6,8 +6,8 @@ export default function Certifications() {
   const [ref, visible] = useIntersectionObserver();
 
   return (
-    <section id="certifications" style={{ padding: '80px 0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 clamp(5%, 8vw, 12%)' }}>
+    <section id="certifications" style={{ padding: '120px 0' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 10%' }}>
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
 
           <span className="sec-label">Credentials</span>
@@ -82,4 +82,5 @@ export default function Certifications() {
     </section>
   );
 }
+
 

@@ -39,8 +39,8 @@ export default function Projects() {
   const [ref, visible] = useIntersectionObserver();
 
   return (
-    <section id="projects" style={{ padding: '80px 0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 clamp(5%, 8vw, 12%)' }}>
+    <section id="projects" style={{ padding: '120px 0' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 10%' }}>
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
 
           <span className="sec-label">Projects</span>
@@ -56,8 +56,16 @@ export default function Projects() {
                   transition: 'border-color 0.2s, background 0.2s',
                   display: 'flex', flexDirection: 'column',   /* flex column for pinning */
                 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(56,189,248,0.30)'; e.currentTarget.style.background = 'rgba(56,189,248,0.04)'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = 'rgba(56,189,248,0.55)';
+                  e.currentTarget.style.background = 'rgba(56,189,248,0.05)';
+                  e.currentTarget.style.boxShadow = '0 0 0 1px rgba(56,189,248,0.15), 0 0 24px rgba(56,189,248,0.12)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
                 {/* Top: icon + title */}
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 14 }}>
@@ -111,4 +119,5 @@ export default function Projects() {
     </section>
   );
 }
+
 

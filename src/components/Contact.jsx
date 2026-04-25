@@ -16,8 +16,8 @@ export default function Contact() {
   const openGmail = () => window.open(`https://mail.google.com/mail/?view=cm&to=${EMAIL}`, '_blank');
 
   return (
-    <section id="contact" style={{ padding: '80px 0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 clamp(5%, 8vw, 12%)' }}>
+    <section id="contact" style={{ padding: '120px 0' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 10%' }}>
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
 
           <span className="sec-label">Contact</span>
@@ -98,4 +98,5 @@ export default function Contact() {
     </section>
   );
 }
+
 

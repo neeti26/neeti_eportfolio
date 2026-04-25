@@ -5,8 +5,8 @@ export default function Experience() {
   const [ref, visible] = useIntersectionObserver();
 
   return (
-    <section id="experience" style={{ padding: '80px 0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 clamp(5%, 8vw, 12%)' }}>
+    <section id="experience" style={{ padding: '120px 0' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 10%' }}>
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
 
           <span className="sec-label">Work Experience</span>
@@ -67,4 +67,5 @@ export default function Experience() {
     </section>
   );
 }
+
 

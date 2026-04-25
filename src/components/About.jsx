@@ -4,8 +4,8 @@ export default function About() {
   const [ref, visible] = useIntersectionObserver();
 
   return (
-    <section id="about" style={{ padding: '80px 0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 clamp(24px, 5%, 80px)' }}>
+    <section id="about" style={{ padding: '120px 0' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 10%' }}>
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
 
           <span className="sec-label">About</span>
@@ -84,3 +84,4 @@ export default function About() {
     </section>
   );
 }
+

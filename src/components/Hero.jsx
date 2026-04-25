@@ -35,7 +35,7 @@ export default function Hero() {
       `}</style>
 
       <section id="hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: 64 }}>
-        <div style={{ width: '100%', maxWidth: 1100, margin: '0 auto', padding: '60px 15%' }}>
+        <div style={{ width: '100%', maxWidth: 1100, margin: '0 auto', padding: '60px 10%' }}>
           <div className="hero-grid" style={{ display: 'grid', gap: 40, alignItems: 'center' }}>
 
             {/* ── LEFT: Text ── */}

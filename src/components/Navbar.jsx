@@ -37,9 +37,9 @@ export default function Navbar() {
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
       transition: 'background 0.3s',
       /* Always blur — prevents circuit lines bleeding through text */
-      background: scrolled ? 'rgba(8,12,20,0.90)' : 'rgba(8,12,20,0.50)',
-      backdropFilter: 'blur(10px)',
-      WebkitBackdropFilter: 'blur(10px)',
+      background: scrolled ? 'rgba(6,11,20,0.95)' : 'rgba(6,11,20,0.70)',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
       borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : 'none',
     }}>
       {/* 15% left margin, centered nav */}

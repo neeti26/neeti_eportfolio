@@ -18,8 +18,8 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" style={{ padding: '80px 0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 clamp(24px, 5%, 80px)' }}>
+    <section id="skills" style={{ padding: '120px 0' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 10%' }}>
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
 
           <span className="sec-label">Skills</span>
@@ -74,3 +74,4 @@ export default function Skills() {
     </section>
   );
 }
+
