@@ -188,3 +188,59 @@ export const education = [
     coursework: ["Database Management", "Data Structures", "Machine Learning", "Business Analytics"],
   },
 ];
+
+export const achievements = [
+  {
+    title: "Rank 1",
+    event: "App Challenges IMED",
+    icon: "🏆"
+  },
+  {
+    title: "3rd Prize",
+    event: "Research Paper Competition, IMED",
+    icon: "📜"
+  },
+  {
+    title: "1st Runner Up",
+    event: "TextTalk, IMED",
+    icon: "🥈"
+  },
+  {
+    title: "Top 50 Teams",
+    event: "QRAPTOR Hackathon",
+    icon: "🚀"
+  },
+  {
+    title: "Top 250 Teams",
+    event: "Project Morpheus Hackathon, SIT Lonavala",
+    icon: "💡"
+  },
+  {
+    title: "Top 200 Teams",
+    event: "MIT WPU Vishawanova 2026",
+    icon: "🌟"
+  }
+];
+
+export const affiliations = [
+  {
+    title: "Mentee",
+    program: "Pragati Cohort 4, Infosys Springboard",
+    icon: "👩‍🏫"
+  },
+  {
+    title: "Participant",
+    program: "AWS Skill Builder Course",
+    icon: "☁️"
+  },
+  {
+    title: "Mentee",
+    program: "AI EMPOWER HER Program",
+    icon: "🤖"
+  },
+  {
+    title: "Scholar",
+    program: "SheFi",
+    icon: "✨"
+  }
+];

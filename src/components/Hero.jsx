@@ -44,43 +44,43 @@ export default function Hero() {
               <div className="anim-in" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '5px 14px', borderRadius: 999,
-                border: '1px solid rgba(56,189,248,0.30)',
-                background: 'rgba(56,189,248,0.06)',
+                border: '1px solid var(--glass-border)',
+                background: 'var(--glass-bg)',
                 marginBottom: 24,
               }}>
-                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#38bdf8', animation: 'pulse 2s infinite', flexShrink: 0 }} />
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#38bdf8' }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--cyan)', animation: 'pulse 2s infinite', flexShrink: 0 }} />
+                <span style={{ fontFamily: 'var(--sans)', fontSize: 11, fontWeight: 500, letterSpacing: '0.04em', color: 'var(--text)' }}>
                   Open to Opportunities
                 </span>
               </div>
 
               {/* Name — Playfair Display, authoritative serif, pure white */}
               <h1 className="anim-up d1" style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
+                fontFamily: "var(--sans)",
                 fontSize: 'clamp(3rem, 5.5vw, 4.8rem)',
-                fontWeight: 900,
-                color: '#ffffff',
-                lineHeight: 1.0,
-                letterSpacing: '-1px',
+                fontWeight: 800,
+                color: 'var(--white)',
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
                 marginBottom: 16,
               }}>Neeti Malu</h1>
 
               {/* Role — monospace, Cyber-Cyan */}
               <div className="anim-up d2" style={{ display: 'flex', alignItems: 'center', gap: 6, height: 34, marginBottom: 28 }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 17, fontWeight: 600, color: '#38bdf8', letterSpacing: '0.04em' }}>{text}</span>
-                <span className="cursor" style={{ display: 'inline-block', width: 2, height: 20, background: '#38bdf8' }} />
+                <span style={{ fontFamily: 'var(--sans)', fontSize: 20, fontWeight: 600, color: 'var(--cyan)' }}>{text}</span>
+                <span className="cursor" style={{ display: 'inline-block', width: 2, height: 22, background: 'var(--cyan)' }} />
               </div>
 
               {/* Bio */}
-              <p className="anim-up d3" style={{ color: '#64748b', fontSize: 14, lineHeight: 1.8, maxWidth: 440, marginBottom: 16 }}>
+              <p className="anim-up d3" style={{ color: 'var(--muted)', fontSize: 15, lineHeight: 1.8, maxWidth: 460, marginBottom: 16 }}>
                 I build intelligent systems — fraud detectors, synthetic data generators, and NLP pipelines —
                 powered by Python, ML, and a relentless curiosity for what data can do.
               </p>
 
               {/* Location */}
               <div className="anim-up d3" style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 36 }}>
-                <MapPin size={13} color="#38bdf8" />
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#475569', letterSpacing: '0.06em' }}>
+                <MapPin size={14} color="var(--cyan)" />
+                <span style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--muted)', letterSpacing: '0.04em' }}>
                   Pune, India · Remote Available
                 </span>
               </div>
@@ -102,18 +102,18 @@ export default function Hero() {
                 {/* Soft radial glow behind */}
                 <div style={{
                   position: 'absolute', inset: -40, zIndex: 0,
-                  background: 'radial-gradient(ellipse at center, rgba(56,189,248,0.10) 0%, transparent 65%)',
-                  filter: 'blur(20px)', pointerEvents: 'none',
+                  background: 'radial-gradient(ellipse at center, var(--cyan-dim) 0%, transparent 65%)',
+                  filter: 'blur(24px)', pointerEvents: 'none',
                 }} />
 
-                {/* Corporate frame: rounded rect, thin sky-blue border */}
+                {/* Corporate frame */}
                 <div style={{
                   position: 'relative', zIndex: 1,
                   borderRadius: 16,
-                  border: '1.5px solid rgba(56,189,248,0.55)',
-                  boxShadow: '0 0 0 1px rgba(56,189,248,0.12), 0 8px 40px rgba(0,0,0,0.6), 0 0 30px rgba(56,189,248,0.08)',
+                  border: '1px solid var(--glass-border)',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                   overflow: 'hidden',
-                  background: '#0a1020',
+                  background: 'var(--bg2)',
                 }}>
                   <img
                     src={profilePhoto}

@@ -6,6 +6,8 @@ const links = [
   { label: 'Experience', href: '#experience' },
   { label: 'Projects',   href: '#projects' },
   { label: 'Skills',     href: '#skills' },
+  { label: 'Achievements', href: '#achievements' },
+  { label: 'Programs', href: '#affiliations' },
   { label: 'Contact',    href: '#contact' },
 ];
 
@@ -36,11 +38,10 @@ export default function Navbar() {
     <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
       transition: 'background 0.3s',
-      /* Always blur — prevents circuit lines bleeding through text */
-      background: scrolled ? 'rgba(6,11,20,0.95)' : 'rgba(6,11,20,0.70)',
+      background: scrolled ? 'rgba(2, 6, 23, 0.95)' : 'rgba(2, 6, 23, 0.70)',
       backdropFilter: 'blur(12px)',
       WebkitBackdropFilter: 'blur(12px)',
-      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
     }}>
       {/* 15% left margin, centered nav */}
       <div style={{
@@ -59,20 +60,18 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               style={{
-                fontFamily: 'var(--mono)',
-                fontSize: '1rem',
+                fontFamily: 'var(--sans)',
+                fontSize: '0.875rem',
                 fontWeight: 500,
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                color: '#ffffff',
+                letterSpacing: '0.05em',
+                color: active === l.href.slice(1) ? 'var(--white)' : 'var(--muted)',
                 textDecoration: 'none',
-                transition: 'opacity 0.2s',
-                opacity: active === l.href.slice(1) ? 1 : 0.75,
-                borderBottom: active === l.href.slice(1) ? '2px solid #38bdf8' : '2px solid transparent',
-                paddingBottom: 2,
+                transition: 'color 0.2s',
+                borderBottom: active === l.href.slice(1) ? '2px solid var(--cyan)' : '2px solid transparent',
+                paddingBottom: 4,
               }}
-              onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-              onMouseLeave={e => { if (active !== l.href.slice(1)) e.currentTarget.style.opacity = '0.7'; }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--white)'}
+              onMouseLeave={e => { if (active !== l.href.slice(1)) e.currentTarget.style.color = 'var(--muted)'; }}
             >
               {l.label}
             </a>
@@ -98,7 +97,7 @@ export default function Navbar() {
         }}>
           {links.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              style={{ fontFamily: 'var(--mono)', fontSize: '1rem', fontWeight: 600, letterSpacing: '2px', color: '#ffffff', textDecoration: 'none', textTransform: 'uppercase' }}>
+              style={{ fontFamily: 'var(--sans)', fontSize: '0.9rem', fontWeight: 500, letterSpacing: '0.05em', color: 'var(--white)', textDecoration: 'none' }}>
               {l.label}
             </a>
           ))}
