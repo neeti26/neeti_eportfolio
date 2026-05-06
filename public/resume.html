@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neeti Malu – Resume</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      color: #111;
+      background: #fff;
+      padding: 0.6in 0.65in;
+      max-width: 8.5in;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 10px; }
+    .header h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .header .tagline {
+      font-size: 10pt;
+      color: #444;
+      margin-bottom: 5px;
+    }
+    .header .contact {
+      font-size: 9.5pt;
+      color: #222;
+    }
+    .header .contact a {
+      color: #1a0dab;
+      text-decoration: none;
+    }
+    .header .contact span { margin: 0 4px; color: #888; }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1.5px solid #111;
+      margin: 7px 0 5px;
+    }
+    hr.thin {
+      border-top: 0.5px solid #ccc;
+      margin: 4px 0;
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 10px; }
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid #111;
+      padding-bottom: 2px;
+    }
+
+    /* ── Objective ── */
+    .objective p { font-size: 10pt; color: #222; }
+
+    /* ── Entry (Experience / Projects) ── */
+    .entry { margin-bottom: 8px; }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .entry-title {
+      font-weight: 700;
+      font-size: 10.5pt;
+    }
+    .entry-date {
+      font-size: 9.5pt;
+      color: #444;
+      white-space: nowrap;
+    }
+    .entry-sub {
+      font-size: 9.5pt;
+      color: #444;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+    .entry ul {
+      padding-left: 16px;
+      margin-top: 2px;
+    }
+    .entry ul li {
+      font-size: 10pt;
+      margin-bottom: 2px;
+    }
+    .entry .tech {
+      font-size: 9pt;
+      color: #555;
+      margin-bottom: 2px;
+    }
+    .entry .repo a {
+      font-size: 9pt;
+      color: #1a0dab;
+      text-decoration: none;
+    }
+
+    /* ── Skills ── */
+    .skills-grid { display: flex; flex-direction: column; gap: 3px; }
+    .skill-row { font-size: 10pt; }
+    .skill-row strong { font-weight: 700; }
+
+    /* ── Education ── */
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .edu-title { font-weight: 700; font-size: 10.5pt; }
+    .edu-date { font-size: 9.5pt; color: #444; }
+    .edu-sub { font-size: 10pt; color: #222; margin-bottom: 2px; }
+    .edu-course { font-size: 9.5pt; color: #444; }
+
+    /* ── Certifications / Achievements / Languages ── */
+    .list-section ul {
+      padding-left: 16px;
+    }
+    .list-section ul li {
+      font-size: 10pt;
+      margin-bottom: 2px;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { padding: 0.5in 0.6in; }
+      a { color: #000 !important; text-decoration: none !important; }
+      .header .contact a { color: #000 !important; }
+      .entry .repo a { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Neeti Malu</h1>
+    <div class="tagline">Data Scientist &nbsp;|&nbsp; Machine Learning Engineer &nbsp;|&nbsp; AI Enthusiast</div>
+    <div class="contact">
+      Pune, India
+      <span>|</span> +91-7821987968
+      <span>|</span> neetimalu@gmail.com
+      <span>|</span> <a href="https://www.linkedin.com/in/neeti-malu/">linkedin.com/in/neeti-malu</a>
+      <span>|</span> <a href="https://github.com/neeti26">github.com/neeti26</a>
+      <span>|</span> <a href="https://neetieportfolio.vercel.app/">Portfolio</a>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- OBJECTIVE -->
+  <div class="section objective">
+    <div class="section-title">Objective</div>
+    <p>
+      Analytical Data Scientist with hands-on experience in Python, SQL, and Scikit-learn. Skilled in data wrangling,
+      exploratory data analysis (EDA), and building high-performing predictive models. Proficient in data visualization
+      with Power BI and Matplotlib. Passionate about solving real-world problems through data-driven insights and
+      continuous learning.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">CYNKEX &nbsp;—&nbsp; Cyber Intern</span>
+        <span class="entry-date">Jan 2026 – Present &nbsp;|&nbsp; Remote</span>
+      </div>
+      <ul>
+        <li>Automating GRC (Governance, Risk &amp; Compliance) workflows to reduce manual audit effort and improve policy enforcement consistency across security operations.</li>
+        <li>Building risk management systems that surface real-time threat indicators and map them to compliance frameworks (NIST, ISO 27001).</li>
+        <li>Designing dashboards to track risk posture across infrastructure assets, enabling proactive threat response.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Infosys Springboard &nbsp;—&nbsp; Artificial Intelligence Intern</span>
+        <span class="entry-date">Oct 2025 – Dec 2025 &nbsp;|&nbsp; Remote</span>
+      </div>
+      <ul>
+        <li>Developed a Smart Traffic Management System using YOLOv8 and TensorFlow for real-time Automatic Number Plate Recognition (ANPR) and vehicle classification.</li>
+        <li>Integrated OpenCV pipelines for high-accuracy vehicle tracking and license plate recognition across live video feeds.</li>
+        <li>Built interactive dashboards for city-scale traffic density visualization, improving operational decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">NIT Trichy &nbsp;—&nbsp; Data Analyst Intern</span>
+        <span class="entry-date">Mar 2025 – Aug 2025 &nbsp;|&nbsp; Remote</span>
+      </div>
+      <ul>
+        <li>Built ML classification models using Scikit-learn to detect fraudulent vehicle insurance claims, boosting detection accuracy by 30% through feature engineering and SMOTE oversampling.</li>
+        <li>Enhanced model robustness via hyperparameter tuning (GridSearchCV) and stratified cross-validation.</li>
+        <li>Delivered weekly data reports and visual dashboards to stakeholders, enabling data-driven decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">AdTech Digital &nbsp;—&nbsp; Data Science Intern</span>
+        <span class="entry-date">Dec 2024 – Jun 2025</span>
+      </div>
+      <ul>
+        <li>Analyzed campaign performance data and optimized Power BI dashboards, improving insight delivery speed and usability for marketing teams.</li>
+        <li>Identified a 15% drop in user retention through cohort analysis, providing actionable insights that redirected marketing strategies for better ROI.</li>
+        <li>Automated Excel-based reporting workflows using Python, reducing manual effort by 40%.</li>
+        <li>Conducted A/B testing to guide budget allocation across digital marketing channels.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Vehicle Insurance Fraud Detection – POC</span>
+      </div>
+      <div class="tech">Python, Scikit-learn, Matplotlib, Seaborn</div>
+      <ul>
+        <li>Built a machine learning system to detect fraudulent vehicle insurance claims using Random Forest, Decision Tree, and Naive Bayes classifiers.</li>
+        <li>Improved model performance through feature engineering, preprocessing, and SMOTE, achieving an F1-score of 0.94.</li>
+        <li>Visualized key fraud indicators with Matplotlib and Seaborn; reduced false positives by 30%.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">VAE-Powered Synthetic Data Generator</span>
+      </div>
+      <div class="tech">Python, TensorFlow, Scikit-learn &nbsp;|&nbsp; <a href="https://github.com/neeti26/VAE-Powered-Synthetic-Data-Generator">github.com/neeti26/VAE-Powered-Synthetic-Data-Generator</a></div>
+      <ul>
+        <li>Developed a Variational Autoencoder (VAE) to generate synthetic network traffic data, addressing class imbalance in intrusion detection datasets.</li>
+        <li>Improved detection accuracy of network anomalies by 25% by augmenting training data with realistic synthetic samples.</li>
+        <li>Conducted comprehensive EDA and visualized attack patterns to enhance interpretability for cybersecurity stakeholders.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">PersonaSynth – Chat With Your AI Personality Twin</span>
+      </div>
+      <div class="tech">Python, PyTorch, Offline LLM, NLP, Speech Synthesis &nbsp;|&nbsp; <a href="https://github.com/neeti26/PersonaSynth">github.com/neeti26/PersonaSynth</a></div>
+      <ul>
+        <li>Built a fully offline, privacy-friendly AI system that emulates a user's personality and communicates in their own voice.</li>
+        <li>Integrated NLP and speech synthesis to generate personalized conversational responses; achieved 95% accuracy in personality alignment tests.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Customer Emotion to Offer Mapper</span>
+      </div>
+      <div class="tech">Python, NLP, Scikit-learn, Pandas &nbsp;|&nbsp; <a href="https://github.com/neeti26/emotion_offer_mapper_project">github.com/neeti26/emotion_offer_mapper_project</a></div>
+      <ul>
+        <li>Designed a predictive model mapping customer emotions from text to optimal product/service offers using sentiment analysis.</li>
+        <li>Increased targeted offer relevance by 20% through feature engineering and multi-class emotion classification.</li>
+        <li>Automated dashboards and reports for marketing teams, enabling data-driven campaign adjustments.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Automated GRC Engine</span>
+      </div>
+      <div class="tech">Python, REST API, ML, Automation</div>
+      <ul>
+        <li>Built an intelligent automation engine that maps security controls to compliance frameworks and generates audit-ready reports.</li>
+        <li>Designed ML-driven workflows to flag policy violations in real time, eliminating repetitive compliance tasks.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Live Polls and Quizzes DAO (Aptos)</span>
+      </div>
+      <div class="tech">Blockchain, Move Language, Aptos &nbsp;|&nbsp; <a href="https://github.com/neeti26/Test">github.com/neeti26/Test</a></div>
+      <ul>
+        <li>Designed and deployed a decentralized application (DAO) for live polls and quizzes on the Aptos blockchain.</li>
+        <li>Implemented smart contracts in Move to ensure secure, transparent, and tamper-proof poll management.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row"><strong>Programming &amp; Tools:</strong> Python, SQL, Java, JavaScript, C, Jupyter Notebook, Google Colab, Git, AWS, Excel</div>
+      <div class="skill-row"><strong>ML &amp; AI Libraries:</strong> Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch, Matplotlib, Seaborn, SciPy, YOLOv8, OpenCV</div>
+      <div class="skill-row"><strong>Databases &amp; Visualization:</strong> MySQL, MongoDB, Power BI, Excel Dashboards</div>
+      <div class="skill-row"><strong>Mathematics &amp; Analysis:</strong> Probability, Statistics, Linear Algebra, Calculus, A/B Testing, Hypothesis Testing, EDA</div>
+      <div class="skill-row"><strong>Soft Skills:</strong> Problem-Solving, Critical Thinking, Communication, Teamwork, Adaptability, Data Storytelling</div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-header">
+      <span class="edu-title">Bharati Vidyapeeth Deemed University, Pune</span>
+      <span class="edu-date">Mar 2023 – May 2026</span>
+    </div>
+    <div class="edu-sub">Bachelor of Computer Application &nbsp;|&nbsp; GPA: 9.4 / 10.0</div>
+    <div class="edu-course"><strong>Relevant Coursework:</strong> Database Management, Data Structures, Machine Learning, Business Analytics</div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section list-section">
+    <div class="section-title">Certifications</div>
+    <ul>
+      <li>Oracle Cloud Infrastructure 2025 Certified Data Science Professional – Oracle (Oct 2025)</li>
+      <li>Amazon Web Services Technical Essentials – AWS (Oct 2025)</li>
+      <li>AWS Cloud Practitioner Essentials – AWS (Oct 2025)</li>
+      <li>Introduction To Technology Apprenticeship Job Simulation – Accenture UK (Jul 2025)</li>
+      <li>Introducing Generative AI with AWS – AWS (Jun 2025)</li>
+      <li>Probability &amp; Statistics Using Python – Infosys Springboard (May 2025)</li>
+      <li>Python Foundation &amp; Basics of Python – Infosys Springboard (May 2025)</li>
+      <li>Python for Data Science – Infosys Springboard (Apr 2025)</li>
+      <li>Data Science Foundation – Infosys Springboard (Mar 2025)</li>
+      <li>Data Science Certification – School of Internet Marketing, Pune (Mar 2025)</li>
+    </ul>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section list-section">
+    <div class="section-title">Achievements &amp; Affiliations</div>
+    <ul>
+      <li>Rank 1 – App Challenges, IMED</li>
+      <li>3rd Prize – Research Paper Competition, IMED</li>
+      <li>1st Runner Up – TextTalk, IMED</li>
+      <li>Top 50 Teams – QRAPTOR Hackathon</li>
+      <li>Mentee – Pragati Cohort 4 (Infosys Springboard) &amp; AI EMPOWER HER Program</li>
+      <li>Scholar – SheFi</li>
+    </ul>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="section list-section">
+    <div class="section-title">Languages</div>
+    <ul>
+      <li>English: Fluent</li>
+      <li>Hindi &amp; Marathi: Native</li>
+      <li>German: Basic Conversational</li>
+    </ul>
+  </div>
+
+</body>
+</html>
